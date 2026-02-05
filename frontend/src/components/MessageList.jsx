@@ -29,7 +29,7 @@ export default function MessageList({ messages, isAgentTyping }) {
             <p className="text-xs font-medium opacity-80 mb-0.5">
               {msg.sender === "user" ? "You" : "Support"}
             </p>
-            <p className="text-sm whitespace-pre-wrap break-words">
+            <p className="text-sm whitespace-pre-wrap wrap-break-word">
               {msg.text}
             </p>
           </div>

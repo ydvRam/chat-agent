@@ -13,17 +13,20 @@ Store policies:
 - Support hours: Monday to Friday, 9 AM – 6 PM IST.
 `;
 
-// Fallback replies when OPENAI_API_KEY is not set (so chat still works for demo)
+// Fallback replies when OPENAI_API_KEY is not set (user-friendly only, no dev messages)
 function getFallbackReply(userMessage) {
   const m = (userMessage || "").toLowerCase();
   if (/return|refund|policy/i.test(m)) {
     return "We have a 30-day return policy. Items must be unused and in original packaging. Refunds are processed within 5 business days after inspection.";
   }
-  if (/shipping|ship|delivery|usa|worldwide/i.test(m)) {
+  if (/shipping|ship|delivery|usa|worldwide|internationally|international/i.test(m)) {
     return "We ship worldwide. Orders ship within 2–3 business days. Need help with a specific region?";
   }
   if (/hour|time|support|contact/i.test(m)) {
     return "Support hours are Monday to Friday, 9 AM – 6 PM IST. How can we help?";
+  }
+  if (/order|payment|track|delivery/i.test(m)) {
+    return "For order status, payment, or tracking, please share your order details and we’ll help you out.";
   }
   return "Thanks for your message! How can we help you today?";
 }
